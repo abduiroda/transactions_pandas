@@ -22,3 +22,12 @@ print(f"\nКлиент с наибольшей суммой пополнений
 df['Месяц'] = df['Дата'].dt.to_period('M') 
 top_month = df.groupby('Месяц')['Сумма'].sum().idxmax()
 print(f"\nМесяц с наибольшей суммой транзакций: {top_month}")
+
+total_by_client.plot(kind='bar', stacked=True, color=['green', 'red'])
+plt.title('Сумма пополнений и снятий по клиентам')
+plt.xlabel('Клиент ID')
+plt.ylabel('Сумма (в рублях)')
+plt.legend(title='Тип операции')
+plt.grid(axis='y', linestyle='--', alpha=0.5)
+plt.tight_layout()
+plt.show()
